@@ -16,7 +16,9 @@ const app = express();
 // middleware
 app.use(
   cors({
-    origin: "http://localhost:3000", // Frontend adresin
+    origin:
+      process.env.FRONTEND_URL ||
+      "https://solo-dash-full-stack-solopreneur-wo.vercel.app",
     credentials: true,
     methods: ["GET", "POST", "PUT", "DELETE"],
     allowedHeaders: ["Content-Type", "Authorization"],
