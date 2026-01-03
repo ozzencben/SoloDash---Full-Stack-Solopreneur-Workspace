@@ -22,14 +22,25 @@ export default function ProfilePage() {
       <header className={styles.hero}>
         <div className={styles.profileMain}>
           <div className={styles.avatarContainer}>
-            <Image
-              src={user.avatarUrl || "/default-avatar.png"}
-              alt={user.name || "User"}
-              width={140}
-              height={140}
-              className={styles.avatar}
-              priority
-            />
+            {user.avatarUrl ? (
+              <Image
+                src={user.avatarUrl || "/default-avatar.png"}
+                alt={user.name || "User"}
+                width={140}
+                height={140}
+                className={styles.avatar}
+                priority
+              />
+            ) : (
+              <div className={styles.avatarPlaceholder}>
+                <span className={styles.initials}>
+                  {user.name
+                    .split(" ")
+                    .map((name) => name.charAt(0))
+                    .join("")}
+                </span>
+              </div>
+            )}
           </div>
           <div className={styles.userText}>
             <h1 className={styles.name}>{user.name}</h1>

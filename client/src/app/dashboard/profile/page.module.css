@@ -231,6 +231,19 @@
   font-family: "Inter", sans-serif;
 }
 
+.avatarPlaceholder {
+  width: 100px;
+  height: 100px;
+  background-color: var(--primary);
+  color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 50%;
+  font-size: 2rem;
+  font-weight: 700;
+}
+
 /* Mobile Responsive */
 @media (max-width: 900px) {
   .contentGrid {
