@@ -1,0 +1,136 @@
+@font-face {
+  font-family: "Inter";
+  src: url("/fonts/Inter28pt-Bold.woff2") format("woff2"),
+    url("/fonts/Inter28pt-Bold.woff") format("woff");
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Inter";
+  src: url("/fonts/Inter28pt-Regular.woff2") format("woff2"),
+    url("/fonts/Inter28pt-Regular.woff") format("woff");
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Inter";
+  src: url("/fonts/Inter28pt-SemiBold.woff2") format("woff2"),
+    url("/fonts/Inter28pt-SemiBold.woff") format("woff");
+  font-display: swap;
+}
+
+:root {
+  /* Arka planı bir tık daha koyulaştırdık (f1f5f9 - Slate 100), 
+     böylece beyaz kartlar üzerinde 'patlayacak' */
+  --background: #f1f5f9;
+  --foreground: #0f172a;
+
+  --bar-bg: #ffffff;
+  /* Sınır çizgilerini daha görünür yaptık */
+  --bar-border: #cbd5e1;
+
+  --primary: #2563eb;
+  --primary-hover: #1d4ed8;
+  --secondary: #475569; /* Daha koyu bir gri */
+
+  --card-bg: #ffffff;
+  --border: #e2e8f0;
+  --error: #ef4444;
+  --success: #10b981;
+
+  --text-color-primary: #0f172a;
+  /* Secondary text'i daha okunabilir bir tona çektik */
+  --text-color-secondary: #475569;
+
+  /* Yeni: Kartlar için yumuşak ama derin bir gölge ekleyelim */
+  --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.05);
+  --shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+}
+
+/* Media query yerine bu seçiciyi kullanıyoruz */
+[data-theme="dark"] {
+  --background: #0a0a0a;
+  --foreground: #ededed;
+  --bar-bg: #141414;
+  --bar-border: #646464;
+  --primary: #2563eb;
+  --primary-hover: #1d4ed8;
+  --secondary: #64748b;
+  --card-bg: #1f2937;
+  --border: #374151;
+  --error: #ef4444;
+  --success: #10b981;
+  --text-color-primary: #ededed;
+  --text-color-secondary: #94a3b8; /* Dark modda biraz daha açık gri daha iyi okunur */
+}
+
+/* Scrollbar Şıklaştırma (Bonus) */
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--background);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--bar-border);
+  border-radius: 5px;
+  border: 2px solid var(--background);
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--secondary);
+}
+
+html,
+body {
+  max-width: 100vw;
+  overflow-x: hidden;
+}
+
+body {
+  color: var(--text-color-primary);
+  background: var(--background);
+  font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+button {
+  cursor: pointer;
+  border: none;
+  border-radius: 6px;
+  font-weight: 500;
+  transition: all 0.2s ease;
+}
+
+textarea {
+  resize: none;
+}
+
+::placeholder {
+  color: var(--text-color-secondary);
+}
+
+::selection {
+  background-color: var(--primary);
+  color: var(--background);
+}
+
+@media (prefers-color-scheme: dark) {
+  html {
+    color-scheme: dark;
+  }
+}

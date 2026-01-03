@@ -1,0 +1,294 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.title {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--text-color-primary);
+  margin-bottom: 15px;
+}
+
+.subtitle {
+  font-size: 0.9rem;
+  color: var(--text-color-secondary);
+}
+
+.addBtn {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background-color: var(--primary);
+  color: white;
+  padding: 10px 20px;
+  border-radius: 8px;
+  border: none;
+  font-weight: 600;
+  cursor: pointer;
+  transition: opacity 0.2s;
+}
+
+.addBtn:hover {
+  opacity: 0.9;
+}
+
+/* Filter bar */
+.filterBar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 20px;
+  margin-bottom: 10px;
+}
+
+.searchWrapper {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  background-color: var(--card-bg);
+  border: 1px solid var(--bar-border);
+  padding: 8px 16px;
+  border-radius: 8px;
+  flex: 1;
+}
+
+.searchInput {
+  background: transparent;
+  border: none;
+  color: var(--text-color-primary);
+  outline: none;
+  width: 100%;
+  font-size: 0.9rem;
+}
+
+.tabGroup {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: var(--card-bg);
+  padding: 4px;
+  border-radius: 10px;
+  border: 1px solid var(--bar-border);
+}
+
+.tabBtn {
+  padding: 8px 16px;
+  border: none;
+  background: transparent;
+  color: var(--text-color-secondary);
+  cursor: pointer;
+  border-radius: 8px;
+  font-size: 0.85rem;
+  transition: all 0.2s;
+}
+
+.activeTab {
+  background-color: var(--primary);
+  color: white;
+}
+
+/* Mobilde filtreleri alt alta alalım */
+@media (max-width: 768px) {
+  .filterBar {
+    flex-direction: column;
+    align-items: stretch;
+  }
+}
+
+/* Kart Izgarası */
+.noData {
+  font-size: 0.9rem;
+  color: var(--text-color-secondary);
+}
+
+.projectGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 20px;
+}
+
+.projectCard {
+  background-color: var(--card-bg);
+  border: 1px solid var(--bar-border);
+  border-radius: 12px;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 16px;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.projectCard:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+}
+
+.projectHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.projectName {
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: var(--text-color-primary);
+}
+
+.projectCategory {
+  font-size: 0.75rem;
+  color: var(--text-color-secondary);
+  background: var(--background);
+  padding: 4px 8px;
+  border-radius: 4px;
+  text-align: center;
+  white-space: nowrap;
+}
+
+.projectStats {
+  display: flex;
+  justify-content: space-between;
+  padding: 12px 0;
+  border-top: 1px solid var(--bar-border);
+  border-bottom: 1px solid var(--bar-border);
+}
+
+.statItem {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.statLabel {
+  font-size: 0.75rem;
+  color: var(--text-color-secondary);
+}
+
+.statValue {
+  font-size: 0.9rem;
+  font-weight: 600;
+}
+
+.cardFooter {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.statusBadge {
+  padding: 4px 12px;
+  border-radius: 20px;
+  font-size: 0.75rem;
+  font-weight: 600;
+}
+
+.completed {
+  background: rgba(16, 185, 129, 0.1);
+  color: #10b981;
+}
+.in_progress {
+  background: rgba(59, 130, 246, 0.1);
+  color: #3b82f6;
+}
+.pending {
+  background: rgba(245, 158, 11, 0.1);
+  color: #f59e0b;
+}
+
+.editBtn {
+  background: transparent;
+  border: 1px solid var(--bar-border);
+  color: var(--text-color-primary);
+  padding: 6px 12px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 0.85rem;
+  transition: all 0.2s ease;
+  background-color: var(--bar-border);
+  position: relative;
+}
+
+.settingsModal {
+  position: absolute;
+  top: 40px;
+  right: 0;
+  width: 100px;
+  height: auto;
+  background-color: var(--card-bg);
+  border: 1px solid var(--bar-border);
+  border-radius: 12px;
+  box-shadow: var(--shadow-sm);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 9999;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 10px 0;
+  gap: 10px;
+  transform: scaleY(0);
+  transform-origin: top;
+  transition: transform 0.2s ease;
+}
+.settingsModal.active {
+  transform: scaleY(1);
+}
+
+.modalItem {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  width: 90%;
+  padding: 10px;
+}
+
+/* modal */
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.formGroup {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.formGroup label {
+  font-size: 0.85rem;
+  color: var(--text-color-secondary);
+}
+
+.formGroup input,
+.formGroup select {
+  padding: 12px;
+  border-radius: 8px;
+  border: 1px solid var(--bar-border);
+  background-color: var(--background);
+  color: var(--text-color-primary);
+  outline: none;
+}
+
+.submitBtn {
+  margin-top: 10px;
+  background-color: var(--primary);
+  color: white;
+  padding: 12px;
+  border-radius: 8px;
+  border: none;
+  font-weight: 600;
+  cursor: pointer;
+}

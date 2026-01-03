@@ -1,0 +1,79 @@
+.page {
+  width: 100%;
+  min-height: 100vh;
+  min-height: 100dvh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.statsGrid {
+  display: grid;
+  /* Burası kartları yan yana dizer: 
+     Her kart en az 240px olsun, sığmazsa alt satıra geç (responsive) */
+  grid-template-columns: repeat(2, 1fr);
+  gap: 20px; /* Kartların arasındaki boşluk */
+  width: 100%;
+}
+
+@media (min-width: 1200px) {
+  .statsGrid {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+.revenueChartContainer {
+  width: 100%;
+}
+
+.tableContainer {
+  width: 100%;
+  background-color: var(--card-bg);
+  border: 1px solid var(--bar-border);
+  border-radius: 12px;
+  padding: 24px;
+  margin-top: 24px;
+  overflow-x: auto; /* Mobilde kaydırılabilir olması için */
+  box-shadow: var(--shadow-md);
+}
+
+.table {
+  width: 100%;
+  border-collapse: collapse;
+  text-align: left;
+}
+
+.table th {
+  padding: 12px;
+  border-bottom: 1px solid var(--bar-border);
+  color: var(--text-color-secondary);
+  font-size: 0.85rem;
+}
+
+.table td {
+  padding: 16px 12px;
+  color: var(--text-color-primary);
+  font-size: 0.9rem;
+  border-bottom: 1px solid var(--bar-border);
+}
+
+.statusBadge {
+  padding: 4px 10px;
+  border-radius: 20px;
+  font-size: 0.75rem;
+  font-weight: 600;
+}
+
+/* Durumlara göre renkler */
+.completed {
+  background: rgba(16, 185, 129, 0.1);
+  color: #10b981;
+}
+.processing {
+  background: rgba(59, 130, 246, 0.1);
+  color: #3b82f6;
+}
+.pending {
+  background: rgba(245, 158, 11, 0.1);
+  color: #f59e0b;
+}

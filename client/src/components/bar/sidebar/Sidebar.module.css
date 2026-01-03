@@ -1,0 +1,197 @@
+.sidebar {
+  width: 250px;
+  height: calc(100vh - clamp(50px, 5vw, 70px));
+  position: fixed;
+  top: clamp(50px, 5vw, 70px);
+  left: 0;
+  z-index: 9999;
+  background-color: var(--bar-bg);
+  border-right: 1px solid var(--bar-border);
+  display: flex;
+  flex-direction: column;
+  transition: width 0.3s cubic-bezier(0.4, 0, 0.2, 1), transform 0.4s ease;
+  overflow: visible;
+}
+
+.sidebarScrollContent {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  width: 100%;
+  padding: 24px 0;
+  gap: 12px;
+  overflow-y: auto;
+  overflow-x: hidden;
+}
+
+.sidebarScrollContent::-webkit-scrollbar {
+  display: none;
+}
+
+.logo {
+  font-size: 16px;
+  font-weight: 700;
+  text-align: center;
+  color: var(--text-color-primary);
+  min-height: 24px;
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
+.seperator {
+  width: 80%;
+  height: 1px;
+  background-color: var(--bar-border);
+  margin: 4px auto;
+  flex-shrink: 0;
+}
+
+.linkList {
+  list-style: none;
+  padding: 0 12px;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.link {
+  width: 100%;
+  padding: 12px;
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  color: var(--text-color-primary);
+  border-radius: 10px;
+  position: relative;
+  transition: background-color 0.2s ease;
+}
+
+.link:hover {
+  background-color: var(--background);
+}
+
+.iconBox {
+  min-width: 28px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-shrink: 0;
+}
+
+.linkText {
+  margin-left: 12px;
+  white-space: nowrap;
+  font-size: 15px;
+  transition: opacity 0.2s ease;
+}
+
+.linkHoverText {
+  position: absolute;
+  left: 70px;
+  background-color: var(--bar-bg);
+  color: var(--text-color-primary);
+  padding: 8px 14px;
+  border-radius: 8px;
+  border: 1px solid var(--bar-border);
+  font-size: 13px;
+  white-space: nowrap;
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  transition: all 0.2s ease;
+  box-shadow: 4px 4px 15px rgba(0,0,0,0.1);
+  z-index: 10001;
+}
+
+.copyright {
+  margin-top: auto;
+  padding: 0 20px;
+  flex-shrink: 0;
+}
+
+.copyrightWrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  padding-bottom: 20px;
+}
+
+.copyrightText {
+  font-size: 11px;
+  color: var(--text-color-secondary);
+}
+
+.overlay {
+  position: fixed;
+  inset: 0;
+  top: clamp(50px, 5vw, 70px);
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 9998;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.3s ease;
+}
+
+.overlayVisible {
+  opacity: 1;
+  visibility: visible;
+}
+
+/* --- DURUMLAR --- */
+
+/* 1. Kapalı (Mini) Durum Ayarları (Tablet ve Desktop için ortak) */
+.sidebar.collapsed {
+  width: 76px;
+}
+
+.sidebar.collapsed .linkText,
+.sidebar.collapsed .copyright {
+  display: none;
+}
+
+.sidebar.collapsed .link {
+  justify-content: center;
+  padding: 12px 0;
+}
+
+.sidebar.collapsed .link:hover .linkHoverText {
+  opacity: 1;
+  visibility: visible;
+  left: 80px;
+}
+
+/* 2. Mobil Ayarları (768px'e kadar olan ekranlar) */
+@media (max-width: 767px) {
+  .sidebar {
+    transform: translateX(-100%);
+    width: 280px !important;
+  }
+  
+  .sidebar.open {
+    transform: translateX(0);
+  }
+
+  /* Mobilde Sidebar açıkken her şeyi göster */
+  .sidebar.open .linkText,
+  .sidebar.open .copyright {
+    display: block;
+  }
+
+  .linkHoverText {
+    display: none !important;
+  }
+}
+
+/* 3. Tablet ve Desktop Ayarları (768px ve üzeri) */
+@media (min-width: 768px) {
+  /* Tooltip'lerin dışarı taşabilmesi için mini modda scroll davranışını düzenle */
+  .sidebar.collapsed .sidebarScrollContent {
+    overflow: visible;
+  }
+  
+  /* Büyük ekranlarda overlay istenmiyorsa bu alanı tutabilirsin */
+  .overlay {
+    display: none;
+  }
+}

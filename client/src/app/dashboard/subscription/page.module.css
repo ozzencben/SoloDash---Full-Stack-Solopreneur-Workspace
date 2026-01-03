@@ -1,0 +1,111 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+}
+
+.header {
+  text-align: center;
+}
+
+.title {
+  font-size: 1.8rem;
+  font-weight: 700;
+}
+
+.subtitle {
+  color: var(--text-color-secondary);
+  margin-top: 8px;
+}
+
+.pricingGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 24px;
+}
+
+.planCard {
+  background-color: var(--card-bg);
+  border: 1px solid var(--bar-border);
+  border-radius: 20px;
+  padding: 32px;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  transition: transform 0.3s ease;
+  box-shadow: var(--shadow-sm);
+}
+
+.planCard:hover {
+  transform: translateY(-8px);
+  box-shadow: var(--shadow-md);
+}
+
+.recommended {
+  border: 2px solid var(--primary);
+  box-shadow: 0 10px 30px rgba(37, 99, 235, 0.1);
+}
+
+.badge {
+  position: absolute;
+  top: -12px;
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: var(--primary);
+  color: white;
+  padding: 4px 12px;
+  border-radius: 20px;
+  font-size: 0.75rem;
+  font-weight: 700;
+}
+
+.planName {
+  font-size: 1.25rem;
+  margin-bottom: 16px;
+}
+
+.price {
+  font-size: 2.5rem;
+  font-weight: 800;
+}
+
+.period {
+  color: var(--text-color-secondary);
+}
+
+.featureList {
+  list-style: none;
+  padding: 0;
+  margin: 32px 0;
+  flex-grow: 1;
+}
+
+.featureItem {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 12px;
+  font-size: 0.95rem;
+}
+
+.planBtn {
+  width: 100%;
+  padding: 12px;
+  border-radius: 12px;
+  border: none;
+  background-color: var(--primary);
+  color: white;
+  font-weight: 600;
+  cursor: pointer;
+  transition: opacity 0.2s;
+}
+
+.currentBtn {
+  background-color: var(--bar-border);
+  color: var(--text-color-secondary);
+  cursor: default;
+}
+
+.planBtn:hover:not(.currentBtn) {
+  opacity: 0.9;
+}
